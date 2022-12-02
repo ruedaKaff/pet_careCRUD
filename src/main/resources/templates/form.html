@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<img src="/assets/img/logo.png"  style="width:100px" class="logo" alt="Logo" />
+		<a class="navbar-brand" href="#"><h1>Pet Care</h2></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active"><a class="nav-link" th:href="@{/listar}">Consultas</a></li>
+				<li class="nav-item"><a class="nav-link" th:href="@{/listar_mascotas}">Mascotas</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1
+			class="text-secondary border border-success border-top-0 border-left-0 border-right-0">Agregar consulta</h1>
+
+		
+		<form th:action="@{/form}" th:object="${consulta}" method="post">
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">motivo</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{motivo}" class="form-control" /> 
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2 col-form-label">servicio</label>
+				<div class="col-sm-6">
+					<input type="text" th:field="*{servicio}" class="form-control"/> 
+				</div>
+			</div>
+			<label for="pets">Escoge una mascota</label>
+
+			<select th:field="*{id_mascota}" id="pets">
+			  <option value="1">Lupe</option>
+			  <option value="2">luka</option>
+			</select>
+			
+			<div class="form-group row">
+				<div class="col-sm-6">
+					<input type="submit" value="Crear consultas" class="btn btn-primary" />
+				</div>
+			</div>
+
+		</form>
+	</div>
+</body>
+</html>

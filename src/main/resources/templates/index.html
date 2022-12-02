@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/assets/css/form.css">
+  <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
+  <title>Index petCare</title>
+</head>
+<body>
+<div style="width: 100%; height: 50vh; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; flex-direction: column; ">
+  <div>
+    <div sec:authorize="isAuthenticated()">
+      <h1 style="padding: 1rem; text-align: center">Bienvenido: [[ ${#request.userPrincipal.principal.usuario.nombre} ]]</h1>
+      <form style="width: 100%; display: flex;justify-content: center;align-items: center" th:action="@{/logout}" method="post">
+        <input type="submit" class="btn btn-send" value="Cerrar Sesion">
+      </form>
+      <div style="padding: 2rem">
+        <a class="btn btn-cancel" style="text-decoration: none;" th:href="@{/listar}">Consultas</a>
+        <a class="btn btn-cancel" style="text-decoration: none;" th:href="@{/listar_mascotas}">Mascotas</a>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
